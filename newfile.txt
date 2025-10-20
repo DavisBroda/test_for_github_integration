@@ -5,3 +5,5 @@ Adding a new line to the file
 inserting line 3
 
 inserting line 4
+
+inserting line 5
