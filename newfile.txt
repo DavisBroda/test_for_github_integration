@@ -3,3 +3,5 @@ This is a newly created file.
 Adding a new line to the file
 
 inserting line 3
+
+inserting line 4
