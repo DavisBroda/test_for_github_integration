@@ -1,0 +1,1 @@
+content in newfile2 should not be visible
