@@ -1,0 +1,26 @@
+services:
+
+  agent-jira-observer:
+    image: brodagroupsoftware/agent-jira-observer
+    hostname: agent-jira-observer
+    user: "${HOST_UID}:${HOST_GID}"
+    ports:
+        # PUBLIC:PRIVATE (inside container)
+        - 8101:8000
+    volumes:
+      - ${PROJECT_DIR}/config/brodagroupsoftware/agents/agent-jira-observer:/app/config
+    environment:
+      - CONFIGURATION_DIR=/app/config
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - JIRA_TOKEN=${JIRA_TOKEN}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 20s
+      retries: 10
+    networks:
+      - localnet
+
+networks:
+    localnet:
+        external: true
